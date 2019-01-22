@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -29,6 +29,7 @@ class Home extends React.Component {
 	};
 
 	render() {
+		const renderCountryItem = ({ item }) => <CountryObject country={item} />;
 		return (
 			<View style={styles.container}>
 				<ScrollView style={styles.container}>
@@ -41,7 +42,11 @@ class Home extends React.Component {
 					/>
 					<View style={styles.line} />
 
-					<CountryObject />
+					<FlatList
+						data={this.props.countries}
+						renderItem={renderCountryItem}
+						keyExtractor={item => item.name}
+					/>
 				</ScrollView>
 				<FabButton
 					icon='refresh'

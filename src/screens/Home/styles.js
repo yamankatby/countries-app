@@ -45,7 +45,6 @@ export const countryObjectStyles = StyleSheet.create({
 		width: 32,
 		height: 20,
 
-		backgroundColor: 'green',
 		borderRadius: 4,
 	},
 });

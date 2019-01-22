@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, Text, Platform, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
+import { View, Text, Platform, TouchableOpacity, TouchableNativeFeedback, Image } from 'react-native';
+import PropTypes from 'prop-types';
 
 import { Icon } from '../../components';
 
@@ -10,14 +11,17 @@ class CountryObject extends React.Component {
 	render() {
 		const TouchableComponent = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
-		//get this information from the props;
-		const countryName = 'Some Country';
+		const { name, nativeName, alpha2Code } = this.props.country;
 
 		return (
 			<TouchableComponent style={styles.container}>
 				<View style={styles.contentContainer}>
-					<View style={styles.countryFlag} />
-					<Text style={styles.countryName}>{countryName}</Text>
+					<Image
+						style={styles.countryFlag}
+						resizeMode='cover'
+						source={{ uri: `https://www.countryflags.io/${alpha2Code}/flat/64.png` }}
+					/>
+					<Text style={styles.countryName}>{`${name} ( ${nativeName} )`}</Text>
 
 					<Icon name='arrow' tintColor={colors.text_color} />
 				</View>
@@ -25,5 +29,9 @@ class CountryObject extends React.Component {
 		);
 	}
 }
+
+CountryObject.propTypes = {
+	country: PropTypes.object,
+};
 
 export default CountryObject;
