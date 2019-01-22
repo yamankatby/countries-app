@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, ScrollView } from 'react-native';
 
 import { Header, SearchInput } from '../../components';
+import CountryObject from './CountryObject';
 
 import { homeStyles as styles } from './styles';
 
@@ -26,6 +27,8 @@ class Home extends React.Component {
 						style={styles.searchInput}
 					/>
 					<View style={styles.line} />
+
+					<CountryObject />
 				</ScrollView>
 			</View>
 		);
