@@ -14,6 +14,13 @@ export default function (state = initialState, action) {
 				...state,
 				countries: action.countries,
 			};
+
+		case ActionTypes.change_search_query:
+			return {
+				...state,
+				searchQuery: action.searchQuery,
+			};
+
 		default:
 			return state;
 	}

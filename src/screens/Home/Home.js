@@ -16,7 +16,8 @@ class Home extends React.Component {
 	}
 
 	onSearchButtonTouched = () => {
-		this.props.dispatch(fetchCountries('some query'));
+		const { searchQuery } = this.props;
+		this.props.dispatch(fetchCountries(searchQuery));
 	};
 
 	onChangeSearchQuery = (text) => {
@@ -54,10 +55,17 @@ class Home extends React.Component {
 
 Home.propTypes = {
 	dispatch: PropTypes.func,
+
+	countries: PropTypes.array,
+	searchQuery: PropTypes.string,
 };
 
 const stateToProps = (state) => {
-	return {};
+	const { countries, searchQuery } = state.countries;
+	return {
+		countries,
+		searchQuery,
+	};
 };
 
 export default connect(stateToProps)(Home);
