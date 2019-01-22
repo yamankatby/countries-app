@@ -3,6 +3,8 @@ import { View, ScrollView } from 'react-native';
 
 import { Header, SearchInput } from '../../components';
 
+import { homeStyles as styles } from './styles';
+
 class Home extends React.Component {
 	onSearchButtonTouched = () => {
 		console.warn('search button touched');
@@ -14,15 +16,16 @@ class Home extends React.Component {
 
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
-				<ScrollView style={{ flex: 1 }}>
+			<View style={styles.container}>
+				<ScrollView style={styles.container}>
 					<Header />
 					<SearchInput
 						placeholder='Ülke adını girin'
 						onPress={this.onSearchButtonTouched}
 						onChangeText={this.onChangeSearchQuery}
-						style={{ alignSelf: 'center' }}
+						style={styles.searchInput}
 					/>
+					<View style={styles.line} />
 				</ScrollView>
 			</View>
 		);
