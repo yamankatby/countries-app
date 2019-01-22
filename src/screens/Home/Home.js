@@ -31,7 +31,7 @@ class Home extends React.Component {
 	};
 
 	onCountryObjectTouched = (country) => {
-		this.props.navigation.navigate('CountryDetails');
+		this.props.navigation.navigate('CountryDetails', { country });
 	};
 
 	render() {
