@@ -11,6 +11,10 @@ import { fetchCountries, changeSearchQuery } from '../../actions/countries';
 import { homeStyles as styles } from './styles';
 
 class Home extends React.Component {
+	componentDidMount() {
+		this.props.dispatch(fetchCountries());
+	}
+
 	onSearchButtonTouched = () => {
 		this.props.dispatch(fetchCountries('some query'));
 	};
