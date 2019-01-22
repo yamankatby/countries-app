@@ -11,10 +11,11 @@ class CountryObject extends React.Component {
 	render() {
 		const TouchableComponent = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
+		const { onPress } = this.props;
 		const { name, nativeName, alpha2Code } = this.props.country;
 
 		return (
-			<TouchableComponent style={styles.container}>
+			<TouchableComponent onPress={onPress} style={styles.container}>
 				<View style={styles.contentContainer}>
 					<Image
 						style={styles.countryFlag}
@@ -32,6 +33,7 @@ class CountryObject extends React.Component {
 
 CountryObject.propTypes = {
 	country: PropTypes.object,
+	onPress: PropTypes.func,
 };
 
 export default CountryObject;

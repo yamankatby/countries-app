@@ -30,8 +30,13 @@ class Home extends React.Component {
 		this.props.dispatch(fetchCountries(''));
 	};
 
+	onCountryObjectTouched = (country) => {
+		this.props.navigation.navigate('CountryDetails');
+	};
+
 	render() {
-		const renderCountryItem = ({ item }) => <CountryObject country={item} />;
+		const renderCountryItem = ({ item }) => <CountryObject country={item}
+		                                                       onPress={this.onCountryObjectTouched.bind(this, item)} />;
 		return (
 			<View style={styles.container}>
 				<ScrollView style={styles.container}>
@@ -62,6 +67,7 @@ class Home extends React.Component {
 
 Home.propTypes = {
 	dispatch: PropTypes.func,
+	navigation: PropTypes.any,
 
 	countries: PropTypes.array,
 	searchQuery: PropTypes.string,
