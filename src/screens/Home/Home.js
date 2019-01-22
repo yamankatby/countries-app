@@ -11,6 +11,8 @@ import { fetchCountries, changeSearchQuery } from '../../actions/countries';
 import { homeStyles as styles } from './styles';
 
 class Home extends React.Component {
+	static navigationOptions = { header: null };
+
 	componentDidMount() {
 		this.props.dispatch(fetchCountries());
 	}
